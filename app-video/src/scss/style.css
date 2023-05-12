@@ -1,0 +1,70 @@
+.app-container {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.1fr 0.25fr 1fr 0.25fr 225px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "pnl-header pnl-header pnl-header"
+      "pnl-load pnl-load pnl-load"
+      "pnl-video pnl-video pnl-input"
+      "pnl-video pnl-video pnl-input"
+      "pnl-list pnl-list pnl-view";
+  }
+  
+.pnl-header { grid-area: pnl-header; }
+
+.pnl-video { grid-area: pnl-video; }
+
+.pnl-load { grid-area: pnl-load; }
+
+.pnl-input { grid-area: pnl-input; }
+
+.pnl-view { grid-area: pnl-view; height: 100%}
+
+.pnl-list {
+    grid-area: pnl-list;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: #1F3B63;
+}
+  
+.style-footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.style-note {
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    height: 150px;
+    margin: 16px;
+    flex: 0 0 auto;
+}
+
+.style-note p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+video {
+    width: 480px;
+    height: 360px;
+}
+
+.input-main {
+    height: 100%;
+}
+
+.style-current-note {
+    height: 100%;
+}
