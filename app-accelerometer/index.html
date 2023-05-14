@@ -9,8 +9,36 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Mobility Network: Accelerometry</span>
+    </div>
+  </nav>
   <div id="output">output</div>
-  <div id="canvas-plot"></div>
+  <div class="container-fluid">
+    <div class="row align-items-center d-flex justify-content-center">
+      <div class="col col-6">
+        <div class="container-fluid d-flex card text-bg-light shadow">
+          <div id="canvas-plot"></div>
+        </div>
+      </div>
+      <div class="col col-4">
+        <div class="container-fluid d-flex card text-bg-light shadow my-2 p-1">
+          <button type="button" class="btn btn-success">Start Recording</button>
+          <button type="button" class="btn btn-dark">Save Recording</button>
+        </div>
+        <div class="container-fluid d-flex card text-bg-light shadow my-2 p-1">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">#</span>
+            <input type="text" class="form-control" placeholder="Participant ID" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <button type="button" class="btn btn-dark">Save Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </body>
 <script src="./src/js/script.js"></script>
 </html>

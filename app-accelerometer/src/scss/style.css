@@ -5,9 +5,13 @@ body {
     overflow-x: hidden;
 }
 
+#output {
+    visibility: hidden;
+}
+
 @media screen and (orientation: portrait) {
     body {
-        transform: rotate(90deg);
+        transform: rotate(0deg);
     }
 }
 
