@@ -1,27 +1,37 @@
 const txtOut = document.getElementById("output");
+const txtID = document.getElementById("txt-id");
 const canvasPlot = document.getElementById("canvas-plot");
-let xyzt = [[],[],[],[]]
+const btnRec = document.getElementById("btn-rec");
+const btnAdd = document.getElementById("btn-add");
+const btnSave = document.getElementById("btn-save");
+
+const AppData = {
+    recording: false,
+    recordings: [],
+    xyzt: [[],[],[],[]]
+}
 
 window.addEventListener('devicemotion', handleMotion);
 
 function handleMotion(e) {
-    txtOut.innerHTML = e.accelerationIncludingGravity.x
-                        + ", " + e.accelerationIncludingGravity.y
-                        + ", " + e.accelerationIncludingGravity.z;
-    xyzt[0].push(e.accelerationIncludingGravity.x)
-    xyzt[1].push(e.accelerationIncludingGravity.y)
-    xyzt[2].push(e.accelerationIncludingGravity.z)
-    xyzt[3].push(e.timeStamp)
+    if (AppData.recording) {
+        txtOut.innerHTML = e.accelerationIncludingGravity.x
+        + ", " + e.accelerationIncludingGravity.y
+        + ", " + e.accelerationIncludingGravity.z;
+        AppData.xyzt[0].push(e.accelerationIncludingGravity.x);
+        AppData.xyzt[1].push(e.accelerationIncludingGravity.y);
+        AppData.xyzt[2].push(e.accelerationIncludingGravity.z);
+        AppData.xyzt[3].push(e.timeStamp);
 
-    plotData()
-    //console.log(e)
+        plotData();
+    }
 }
 
 function plotData() {
     // Define Data
-    var trace1 = {x: xyzt[3], y: xyzt[0], name: 'X', mode: 'lines'};
-    var trace2 = {x: xyzt[3], y: xyzt[1], name: 'Y', mode: 'lines'};
-    var trace3 = {x: xyzt[3], y: xyzt[2], name: 'Z', mode: 'lines'};
+    var trace1 = {x: AppData.xyzt[3], y: AppData.xyzt[0], name: 'X', mode: 'lines'};
+    var trace2 = {x: AppData.xyzt[3], y: AppData.xyzt[1], name: 'Y', mode: 'lines'};
+    var trace3 = {x: AppData.xyzt[3], y: AppData.xyzt[2], name: 'Z', mode: 'lines'};
     var data = [trace1, trace2, trace3];
     // Define Layout
     var layout = {

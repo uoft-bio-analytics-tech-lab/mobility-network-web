@@ -7,6 +7,7 @@
   <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="./src/scss/main.css">
   <link rel="stylesheet" href="./src/scss/style.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -17,7 +18,7 @@
   </nav>
   <div id="output">output</div>
   <div class="container-fluid">
-    <div class="row align-items-center">
+    <div class="row align-items-center d-flex justify-content-center">
       <div class="col d-flex justify-content-center">
         <ul class="nav nav-pills" id="tabs-vid-1" role="tablist">
           <li class="nav-item" role="presentation">
@@ -36,13 +37,33 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="card-vid-1" role="tabpanel" aria-labelledby="tab-vid-1" tabindex="0">
             <video id="video-1" controls></video>
-            <button type="button" class="btn btn-success" id="load-video-1">Load Video</button>
-            <button type="button" class="btn btn-dark" id="sync-video-1">Sync Start</button>
+            <input type="file" accept="video/*" style="display: none;" id="file-1"/>
+            <label for="file-1" class="btn btn-success btn-sm">Load Video</label>
+            <button type="button" class="btn btn-dark btn-sm" id="sync-video-1">Sync Start</button>
+            <div class="btn-group mx-1">
+              <button class="btn btn-outline-dark btn-sm">
+                <span class="bi bi-skip-backward-fill"></span>
+              </button>
+              <button class="btn btn-sm" disabled>Frame</button>
+              <button class="btn btn-outline-dark btn-sm">
+                <span class="bi bi-skip-forward-fill"></span>
+              </button>
+            </div>
           </div>
           <div class="tab-pane fade" id="card-vid-2" role="tabpanel" aria-labelledby="tab-vid-2" tabindex="0">
             <video id="video-2" controls></video>
-            <button type="button" class="btn btn-success" id="load-video-2">Load Video</button>
-            <button type="button" class="btn btn-dark" id="sync-video-2">Sync Start</button>
+            <input type="file" accept="video/*" style="display: none;" id="file-2"/>
+            <label for="file-2" class="btn btn-success btn-sm">Load Video</label>
+            <button type="button" class="btn btn-dark btn-sm" id="sync-video-2">Sync Start</button>
+            <div class="btn-group mx-1">
+              <button class="btn btn-outline-dark btn-sm">
+                <span class="bi bi-skip-backward-fill"></span>
+              </button>
+              <button class="btn btn-sm" disabled>Frame</button>
+              <button class="btn btn-outline-dark btn-sm">
+                <span class="bi bi-skip-forward-fill"></span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -64,13 +85,89 @@
         <div class="tab-content" id="cards-vid-2">
           <div class="tab-pane fade show active" id="card-vid-3" role="tabpanel" aria-labelledby="tab-vid-3" tabindex="0">
             <video id="video-3" controls></video>
-            <button type="button" class="btn btn-success" id="load-video-3">Load Video</button>
-            <button type="button" class="btn btn-dark" id="sync-video-3">Sync Start</button>
+            <input type="file" accept="video/*" style="display: none;" id="file-3"/>
+            <label for="file-3" class="btn btn-success btn-sm">Load Video</label>
+            <button type="button" class="btn btn-dark btn-sm" id="sync-video-3">Sync Start</button>
+            <div class="btn-group mx-1">
+              <button class="btn btn-outline-dark btn-sm">
+                <span class="bi bi-skip-backward-fill"></span>
+              </button>
+              <button class="btn btn-sm" disabled>Frame</button>
+              <button class="btn btn-outline-dark btn-sm">
+                <span class="bi bi-skip-forward-fill"></span>
+              </button>
+            </div>
           </div>
           <div class="tab-pane fade" id="card-vid-4" role="tabpanel" aria-labelledby="tab-vid-4" tabindex="0">
             <video id="video-4" controls></video>
-            <button type="button" class="btn btn-success" id="load-video-4">Load Video</button>
-            <button type="button" class="btn btn-dark" id="sync-video-4">Sync Start</button>
+            <input type="file" accept="video/*" style="display: none;" id="file-4"/>
+            <label for="file-4" class="btn btn-success btn-sm">Load Video</label>
+            <button type="button" class="btn btn-dark btn-sm" id="sync-video-4">Sync Start</button>
+            <div class="btn-group mx-1">
+              <button class="btn btn-outline-dark btn-sm">
+                <span class="bi bi-skip-backward-fill"></span>
+              </button>
+              <button class="btn btn-sm" disabled>Frame</button>
+              <button class="btn btn-outline-dark btn-sm">
+                <span class="bi bi-skip-forward-fill"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-start my-3">
+      <div class="container d-flex justify-content-center bg-light border border-2 py-2">
+        <div class="btn-group mx-1">
+          <button class="btn btn-dark">
+            <span class="bi bi-arrow-clockwise"></span>
+            Restart
+          </button>
+          <button class="btn btn-success">
+            <span class="bi bi-play-fill"></span>
+            Play
+          </button>
+        </div>
+        <div class="btn-group mx-1">
+          <button class="btn btn-outline-dark">
+            <span class="bi bi-skip-backward-fill"></span>
+          </button>
+          <button class="btn" disabled>Frame</button>
+          <button class="btn btn-outline-dark">
+            <span class="bi bi-skip-forward-fill"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-start d-flex justify-content-center my-2">
+      <div class="col-3">
+        <div class="card text-white bg-dark mb-3" style="width: 100%; height: 300px;" id="card-annotate">
+          <div class="card-header">Add Annotation</div>
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Insert title here">
+            </div>
+            <div class="input-group mb-3" style="height: 50%;">
+              <textarea type="text" class="form-control" placeholder="Add note here"></textarea>
+            </div>
+            <button class="btn btn-success">
+              Add Note
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-7">
+        <div class="card text-dark bg-light mb-3" style="width: 100%; height: 300px;" id="card-list">
+          <div class="card-header">Annotation List</div>
+          <div class="card-body">
+            <div class="card text-dark bg-light mb-3" style="width: 180px; height: 220px;">
+              <div class="card-header">Title 1</div>
+              <div class="card-body">
+                <p class="card-text" style="height: 100px">Text 1</p>
+                <button class="btn btn-sm btn-dark">View</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
