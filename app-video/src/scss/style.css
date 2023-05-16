@@ -9,6 +9,15 @@ body {
     visibility: hidden;
 }
 
+.display-card {
+    width: 180px;
+    height: 220px;
+}
+
+.card-body-text {
+    height: 100px;
+}
+
 @media screen and (orientation: portrait) {
     body {
         transform: rotate(0deg);
