@@ -146,10 +146,12 @@ function setVideoControlBar() {
     }
     
     CtrlFramePrev.onclick = function () {
-        for (v=0; v<AppData.numVid; v++) {
-            if (AppData.videoLoaded[v]) {
-                handlePreviousFrame(v);
-                handleVideoTimeUpdate(v);
+        if (AppData.videoTime >= 0) {
+            for (v=0; v<AppData.numVid; v++) {
+                if (AppData.videoLoaded[v]) {
+                    handlePreviousFrame(v);
+                    handleVideoTimeUpdate(v);
+                }
             }
         }
     }
@@ -157,9 +159,10 @@ function setVideoControlBar() {
 
 function setNoteInputs() {
     AddNote.onclick = function () {
-        let title = InputTitle.value;
+        let time = AppData.videoTime;
         let text = InputText.value;
-        //let time = 
+        
+        createCard(time, text)
     }
 }
 
@@ -184,7 +187,7 @@ function handleSyncVideo(idx) {
     AppData.videoStart[idx] = AppData.videoDOM[idx].currentTime;
 }
 
-function createCard(title, text) {
+function createCard(time, text) {
     let card = document.createElement('div');
     let cardHeader = document.createElement('div');
     let cardBody = document.createElement('div');
@@ -198,10 +201,15 @@ function createCard(title, text) {
     cardBodyText.className = 'card-text card-body-text';
     btnCardView.className = 'btn btn-sm btn-dark';
     btnCardDel.className = 'btn btn-sm btn-danger';
-    cardHeader.innerHTML = title;
+    cardHeader.innerHTML = time;
     cardBodyText.innerHTML = text;
     btnCardView.innerHTML = "View";
     btnCardDel.innerHTML = "Delete";
+
+    // Add card functionality
+    btnCardDel.onclick = function () {
+        this.parentElement.parentElement.remove();
+    };
 
     card.appendChild(cardHeader);
     cardBody.appendChild(cardBodyText);

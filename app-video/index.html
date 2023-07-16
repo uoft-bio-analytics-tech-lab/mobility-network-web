@@ -20,7 +20,7 @@
   <div class="container-fluid">
     <div class="row align-items-center d-flex justify-content-center">
       <div class="col d-flex justify-content-center">
-        <ul class="nav nav-pills" id="tabs-vid-1" role="tablist">
+        <ul class="nav nav-pills flex-column" id="tabs-vid-1" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="tab-vid-1" data-bs-toggle="tab" data-bs-target="#card-vid-1"
               type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
@@ -34,9 +34,9 @@
             </button>
           </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
+        <div class="tab-content" id="cards-vid-1">
           <div class="tab-pane fade show active" id="card-vid-1" role="tabpanel" aria-labelledby="tab-vid-1" tabindex="0">
-            <video id="video-1" controls></video>
+            <div><video id="video-1" controls></video></div>
             <input type="file" accept="video/*" style="display: none;" id="file-1"/>
             <label for="file-1" class="btn btn-success btn-sm">Load Video</label>
             <button type="button" class="btn btn-dark btn-sm" id="sync-video-1">Sync Start</button>
@@ -51,7 +51,7 @@
             </div>
           </div>
           <div class="tab-pane fade" id="card-vid-2" role="tabpanel" aria-labelledby="tab-vid-2" tabindex="0">
-            <video id="video-2" controls></video>
+            <div><video id="video-2" controls></video></div>
             <input type="file" accept="video/*" style="display: none;" id="file-2"/>
             <label for="file-2" class="btn btn-success btn-sm">Load Video</label>
             <button type="button" class="btn btn-dark btn-sm" id="sync-video-2">Sync Start</button>
@@ -68,23 +68,23 @@
         </div>
       </div>
       <div class="col d-flex justify-content-center">
-        <ul class="nav nav-pills" id="tabs-vid-2" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="tab-vid-3" data-bs-toggle="tab" data-bs-target="#card-vid-3"
-              type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
-              Video #3
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="tab-vid-4" data-bs-toggle="tab" data-bs-target="#card-vid-4"
-              type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
-              Video #4
-            </button>
-          </li>
-        </ul>
-        <div class="tab-content" id="cards-vid-2">
+          <ul class="row nav nav-pills flex-column" id="tabs-vid-2" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="tab-vid-3" data-bs-toggle="tab" data-bs-target="#card-vid-3"
+                type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+                Video #3
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-vid-4" data-bs-toggle="tab" data-bs-target="#card-vid-4"
+                type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+                Video #4
+              </button>
+            </li>
+          </ul>
+        <div class="row tab-content" id="cards-vid-2">
           <div class="tab-pane fade show active" id="card-vid-3" role="tabpanel" aria-labelledby="tab-vid-3" tabindex="0">
-            <video id="video-3" controls></video>
+            <div><video id="video-3" controls></video></div>
             <input type="file" accept="video/*" style="display: none;" id="file-3"/>
             <label for="file-3" class="btn btn-success btn-sm">Load Video</label>
             <button type="button" class="btn btn-dark btn-sm" id="sync-video-3">Sync Start</button>
@@ -99,7 +99,7 @@
             </div>
           </div>
           <div class="tab-pane fade" id="card-vid-4" role="tabpanel" aria-labelledby="tab-vid-4" tabindex="0">
-            <video id="video-4" controls></video>
+            <div><video id="video-4" controls></video></div>
             <input type="file" accept="video/*" style="display: none;" id="file-4"/>
             <label for="file-4" class="btn btn-success btn-sm">Load Video</label>
             <button type="button" class="btn btn-dark btn-sm" id="sync-video-4">Sync Start</button>
