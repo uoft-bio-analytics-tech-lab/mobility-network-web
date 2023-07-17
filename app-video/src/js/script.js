@@ -25,7 +25,7 @@ const CtrlFramePrev = document.getElementById("ctrl-frame-prev");
 const CtrlFrameNext = document.getElementById("ctrl-frame-next");
 const CardContainer = document.getElementById("list-cards");
 const AddNote = document.getElementById("add-note");
-const InputTitle = document.getElementById("input-title");
+const InputTime = document.getElementById("input-time");
 const InputText = document.getElementById("input-text");
 const iconPlay  ="<span class='bi bi-play-fill'></span>";
 const iconPause  ="<span class='bi bi-pause-fill'></span>";
@@ -51,7 +51,6 @@ window.onload = function () {
     setVideoControlBar();
     // Set Add Note Controls
     setNoteInputs();
-    createCard();
 }
 
 function setVideoSize(width, height) {
@@ -168,7 +167,8 @@ function setNoteInputs() {
 
 function handleVideoTimeUpdate(idx) {
     AppData.videoTime = AppData.videoDOM[idx].currentTime - AppData.videoStart[idx];
-    Time.innerHTML = Math.round(AppData.videoTime * 100) / 100;
+    Time.innerHTML = AppData.videoTime.toFixed(2);
+    InputTime.innerHTML = AppData.videoTime.toFixed(2);
 }
 
 function handleNextFrame(idx) {
@@ -183,6 +183,10 @@ function handlePreviousFrame(idx) {
     }
 }
 
+function handleViewFrame(idx, frameTime) {
+    AppData.videoDOM[idx].currentTime = frameTime;
+}
+
 function handleSyncVideo(idx) {
     AppData.videoStart[idx] = AppData.videoDOM[idx].currentTime;
 }
@@ -194,6 +198,7 @@ function createCard(time, text) {
     let cardBodyText = document.createElement('p');
     let btnCardView = document.createElement('button');
     let btnCardDel = document.createElement('button');
+    let timeCard = document.createElement('p');
 
     card.className = 'card text-dark bg-light mx-1 display-card';
     cardHeader.className = 'card-header';
@@ -201,15 +206,26 @@ function createCard(time, text) {
     cardBodyText.className = 'card-text card-body-text';
     btnCardView.className = 'btn btn-sm btn-dark';
     btnCardDel.className = 'btn btn-sm btn-danger';
-    cardHeader.innerHTML = time;
+    timeCard.style.display = 'none';
+
+    cardHeader.innerHTML = time.toFixed(2);
     cardBodyText.innerHTML = text;
     btnCardView.innerHTML = "View";
     btnCardDel.innerHTML = "Delete";
+    timeCard.innerHTML = time;
 
     // Add card functionality
     btnCardDel.onclick = function () {
         this.parentElement.parentElement.remove();
     };
+
+    btnCardView.onclick = function () {
+        for (v=0; v<AppData.numVid; v++) {
+            if (AppData.videoLoaded[v]) {
+                handleViewFrame(v, time);
+            }
+        }
+    }
 
     card.appendChild(cardHeader);
     cardBody.appendChild(cardBodyText);
